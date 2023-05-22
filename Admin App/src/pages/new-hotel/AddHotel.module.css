@@ -1,0 +1,101 @@
+.add-container{
+    width: 100%;
+    padding: 10px;
+}
+.add-title{
+    width: calc(100% - 10px) ;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #00000078;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.add-main{
+  padding: 20px 30px 0;
+    width: calc(100% - 60px);
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.form-add{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.form-add > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.form-add_top{
+    display: flex;
+    flex-direction: column;
+}
+.form-add_top input:focus-visible{
+    outline: none;
+}
+.form-add_element{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+.form-add_element input {
+    border: none;
+    border-bottom: 1px solid #00000052;
+    margin: 5px 0 10px;
+    padding-bottom: 5px;
+    width: 450px;
+}
+
+.input-img {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.input-img input {
+   height: 28px;
+    border: 1px solid #00000052;
+    margin: 5px 0 10px;
+    padding-bottom: 5px;
+    width: 450px;
+}
+
+.input-img select {
+    border: 1px solid #00000052;
+    margin: 5px 0 10px;
+    padding-bottom: 5px;
+    width: 50px;
+}
+.input-img select:focus-visible{
+    outline: none;
+}
+
+.form-add_bot{
+    width: 100%;
+    font-size: 14px;
+}
+.main-bot{
+    border: 1px solid #00000052;
+    margin-top: 5px;
+    display: flex;
+    height: 80px;
+    flex-direction: column;
+    padding: 10px;
+    overflow: scroll;
+   
+}
+
+
+.send-btn{
+    border: none;
+    width: 140px;
+    height: 30px;
+    color: white;
+    background-color: rgb(0, 128, 128);
+    margin: 20px 0;
+}

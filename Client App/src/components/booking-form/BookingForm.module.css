@@ -1,0 +1,127 @@
+.form-container{
+    margin-top: 15px;
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 45px;
+}
+.form-main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+.form-main h2 {
+    margin-bottom: 15px;
+}
+.form-date{
+    width: 360px;
+
+}
+.form-reserve{
+    width: calc(100% - 400px);
+}
+.form-user{
+    display: flex;
+    flex-direction: column;
+}
+.form-user>label{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.form-user>input{
+    height: 35px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+.select-room{
+    width: 100%;
+}
+.select-room h2 {
+    margin-bottom: 15px;
+}
+.room-detail_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.room-detail{
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.room-detail>div{
+    width: calc(100% - 175px);
+}
+
+.room-detail_title{
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.room-detail_maxpeople{
+    font-size: 12px;
+    margin: 5px 0;
+}
+.room-detail_price{
+    font-weight: 700;
+}
+.roomNumber{
+    display: flex;
+    width: 175px;
+    justify-content: space-evenly;
+}
+.room-number{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.room-number label {
+    font-size: 15px;
+}
+.room-number input {
+    width: 18px;
+    height: 18px;
+}
+.total-bill{
+    display: flex;
+    flex-direction: column;
+}
+.total-bill > h2{
+    margin-bottom: 15px;
+}
+.total-bill > div {
+    display: flex;
+}
+.payment-method{
+    width: 300px;
+    margin-right: 20px;
+    height: 50px;
+    background-color: rgb(239,239,239);
+    border: 1px solid #00000036;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: 15px;
+}
+.payment-method:focus-visible{
+    outline: none;
+}
+.reserve-btn{
+    border: none;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(0, 113, 194);
+    color: white;
+    font-size: 16px;
+    margin-left: 70px;
+}
+.error-message{
+    margin-left: 400px;
+    margin-top: 15px;
+    color: red;
+}

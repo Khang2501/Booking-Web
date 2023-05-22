@@ -1,0 +1,79 @@
+.transaction-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.transaction-main > h2 {
+    margin: 15px 0;
+}
+.transaction-table{
+    width: 100%;
+    max-width: 1024px;
+}
+.table-header{
+    text-align: left;
+    background-color: #32A4C1;
+    height: 35px;
+    color: white;
+}
+.table-header th:nth-child(1){
+    padding-left: 10px;
+    width: 35px;
+}
+.table-header th:nth-child(2) {
+    padding-left: 10px;
+    width: 300px;
+}
+.table-header th:nth-child(3){
+    padding-left: 10px;
+    width: 70px;
+}
+.table-header th:nth-child(4) {
+    padding-left: 10px;
+    width: 190px;
+}
+.table-header th:nth-child(5) {
+    padding-left: 10px;
+    width: 70px;
+}
+.table-header th:nth-child(6) {
+    padding-left: 10px;
+    width: 150px;
+}
+.table-header th:nth-child(7) {
+    padding-left: 10px;
+}
+.table-body td{
+    padding-left: 10px;
+   
+    height: 46px;
+}
+.transaction-table > tbody tr:nth-child(odd){
+
+    background-color: rgb(242, 242, 242);
+}
+
+
+
+/* Status css */
+.Checkout{
+    background-color: rgb(211, 208, 242);
+    padding: 6px;
+    border-radius: 5px;
+    color: rgb(20, 137, 52);
+    font-weight: 500;
+}
+.Checkin{
+    background-color: rgb(57, 209, 57);
+    padding: 6px;
+    border-radius: 5px;
+    color: rgb(20, 137, 52);
+    font-weight: 500;
+}
+.Booked{
+    background-color: rgb(246, 150, 133);
+    padding: 6px;
+    border-radius: 5px;
+    color: rgb(20, 137, 52);
+    font-weight: 500;
+}

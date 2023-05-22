@@ -1,0 +1,23 @@
+.admin-container{
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+}
+.admin-container > div{
+    width: 1112px;
+}
+.main-top{
+    border: 1px solid #00000045;
+    border-left: none;
+    height: 45px;
+
+}
+.login-container{
+    display: flex;
+    height: 100vh;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}

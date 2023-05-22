@@ -1,0 +1,117 @@
+.list-container{
+    padding: 20px;
+}
+.list-container>p{
+    margin-top: 0;
+    font-weight: 500;
+    color: #00000094;
+}
+.table-container{
+    height: 350px;
+    border: 1px solid rgba(109, 109, 109, 0.185);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.list-table{
+    width: 100%;
+    border: 1px solid rgba(109, 109, 109, 0.185);
+    border-radius: 5px;
+    font-size: 12px;
+}
+.table-header{
+    height: 40px;
+    border-bottom: 1px solid rgba(109, 109, 109, 0.7);
+}
+
+
+.table-header td:nth-child(1){
+    width: 30px;
+}
+.table-header td:nth-child(2) {
+    width: 160px;
+}
+.table-header td:nth-child(3) {
+    width: 120px;
+}
+.table-header td:nth-child(4) {
+    width: 190px;
+}
+.table-header td:nth-child(5) {
+    width: 110px;
+}
+.table-header td:nth-child(6) {
+    width: 145px;
+}
+.table-header td:nth-child(7) {
+    width: 50px;
+}
+.table-header td:nth-child(8) {
+    width: 100px;
+}
+
+.checkbox{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.table-header > td > div> div {
+    height: 13px;
+    border-right: 1px solid #00000059;;
+}
+.table-body{
+    height: 40px;
+}
+table {
+    border-collapse: collapse;
+}
+
+table thead tr td {
+    border-radius: 5px;
+    border-bottom: 1px solid #00000036;
+}
+table tbody tr td {
+    border-radius: 5px;
+    border-bottom: 1px solid #0000002a;
+}
+
+/* Status css */
+.Checkout {
+    background-color: rgb(211, 208, 242);
+    padding: 6px;
+    border-radius: 5px;
+    color: rgb(20, 137, 52);
+    font-weight: 500;
+}
+
+.Checkin {
+    background-color: rgb(57, 209, 57);
+    padding: 6px;
+    border-radius: 5px;
+    color: rgb(20, 137, 52);
+    font-weight: 500;
+}
+
+.Booked {
+    background-color: rgb(246, 150, 133);
+    padding: 6px;
+    border-radius: 5px;
+    color: rgb(20, 137, 52);
+    font-weight: 500;
+}
+
+.list-pages{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 12px;
+    height: 40px;
+    border-top: 1px solid rgba(109, 109, 109, 0.185);
+    padding-right: 20px;
+}
+.arrow{
+    margin-left: 10px;
+}
