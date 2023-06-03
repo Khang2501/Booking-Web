@@ -33,7 +33,7 @@ const Hotel = () => {
   const [isBooking, setIsBooking] = useState(false)
 
   useEffect(()=>{
-    axios.get(`http://localhost:5000/hotel/${id}`)
+    axios.get(`/hotel/${id}`)
     .then(result=>{
       
       setData(result.data)

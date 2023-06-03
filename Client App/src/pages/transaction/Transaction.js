@@ -24,7 +24,7 @@ const Transaction = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/transaction/${user.user.username}`)
+      .get(`/transaction/${user.user.username}`)
       .then((result) => {
         setDataTrans(result.data);
       })

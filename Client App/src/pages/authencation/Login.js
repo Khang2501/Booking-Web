@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/user", {
+      .post("/user", {
         username: userNameRef.current.value,
         password: passwordRef.current.value,
       })
@@ -43,8 +43,8 @@ const Login = () => {
     <div className={classes.container}>
       <form onSubmit={loginHandler} className={classes["form-login"]}>
         <h1>Login</h1>
-        <input type="text" ref={userNameRef} />
-        <input type="password" ref={passwordRef} />
+        <input placeholder="Email" type="text" ref={userNameRef} />
+        <input placeholder="Password" type="password" ref={passwordRef} />
         {isWrong && <p>User name or Password went wrong!</p>}
         <button>Login</button>
       </form>

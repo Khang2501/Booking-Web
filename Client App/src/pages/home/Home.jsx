@@ -12,7 +12,7 @@ const Home = () => {
 
   const [hotel, setHotel] = useState({area:{}, type:{}, rating:[]})
   useEffect(()=>{
-    axios.get('http://localhost:5000/hotel')
+    axios.get('/hotel')
     .then(result=>setHotel(result.data))
     .catch(err=>console.log(err))
   },[])

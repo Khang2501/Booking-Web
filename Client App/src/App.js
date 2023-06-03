@@ -5,7 +5,9 @@ import List from "./pages/list/List";
 import Login from "./pages/authencation/Login";
 import Register from "./pages/authencation/Register";
 import Transaction from "./pages/transaction/Transaction";
+import axios from "axios";
 function App() {
+  axios.defaults.baseURL = "http://localhost:5000";
   return (
     <BrowserRouter>
       <Routes>
