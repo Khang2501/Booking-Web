@@ -25,6 +25,7 @@ const AddHotel = () => {
   const [dataFea, setDataFea] = useState([]);
 
   const [toggleWarning, setToggleWarning] = useState(false);
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
     axios
       .get("http://localhost:5000/admin/room/all")
@@ -47,7 +48,7 @@ const AddHotel = () => {
     const isExistence = arrRoom.some((arr) => arr === id);
     let updateRooms = arrRoom;
     if (isExistence) {
-      updateRooms = arrRoom.filter((arr) => arr != id);
+      updateRooms = arrRoom.filter((arr) => arr !== id);
     } else {
       updateRooms.push(id);
     }
@@ -71,7 +72,7 @@ const AddHotel = () => {
       setToggleWarning(true);
     } else {
       axios
-        .post("http://localhost:5000/admin/add-new-hotel", {
+        .post("/admin/add-new-hotel", {
           name: name,
           type: type,
           city: city,
@@ -84,7 +85,9 @@ const AddHotel = () => {
           rooms: room,
           cheapestPrice: price,
         })
-        .then(() => {})
+        .then((result) => {
+          if (result.data) setSuccess(true);
+        })
         .catch((err) => {
           console.log(err);
         });
@@ -103,6 +106,18 @@ const AddHotel = () => {
           >
             <AlertTitle>Warning</AlertTitle>
             Fill full the information
+          </Alert>
+        </Stack>
+      )}
+      {success && (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert
+            onClose={() => {
+              setSuccess((suc) => !suc);
+              navigate("/hotels");
+            }}
+          >
+            Add hotel success
           </Alert>
         </Stack>
       )}

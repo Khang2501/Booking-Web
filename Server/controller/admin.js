@@ -91,7 +91,7 @@ exports.addNewHotel = (req, res, next) => {
     rooms: req.body.rooms,
     cheapestPrice: req.body.cheapestPrice,
   });
-  hotel.save();
+  hotel.save().then((success) => res.send(true));
 };
 exports.deletedRoom = (req, res, next) => {
   const roomId = req.params.roomId;

@@ -6,9 +6,10 @@ import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import AlertTitle from "@mui/material/AlertTitle";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const EditHotel = () => {
+  const navigate = useNavigate();
   const params = useParams();
-  //   console.log(params.hotelId);
 
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
@@ -24,10 +25,11 @@ const EditHotel = () => {
   const [dataFea, setDataFea] = useState([]);
   const [toggleWarning, setToggleWarning] = useState(false);
 
+  const [success, setSuccess] = useState(true);
   const [defaultPrice, setDefaultPrice] = useState("");
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/admin/hotel/${params.hotelId}`)
+      .get(`/admin/hotel/${params.hotelId}`)
       .then((result) => {
         const data = result.data[0];
 
@@ -50,7 +52,7 @@ const EditHotel = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/room/all")
+      .get("/admin/room/all")
       .then((result) => {
         const arr = result.data.map((res) => {
           return {
@@ -70,7 +72,7 @@ const EditHotel = () => {
     const isExistence = arrRoom.some((arr) => arr === id);
     let updateRooms = arrRoom;
     if (isExistence) {
-      updateRooms = arrRoom.filter((arr) => arr != id);
+      updateRooms = arrRoom.filter((arr) => arr !== id);
     } else {
       updateRooms.push(id);
     }
@@ -97,7 +99,7 @@ const EditHotel = () => {
       setToggleWarning(false);
 
       axios
-        .post(`http://localhost:5000/admin/edit-hotel/${params.hotelId}`, {
+        .post(`/admin/edit-hotel/${params.hotelId}`, {
           name: name,
           type: type,
           city: city,
@@ -129,6 +131,18 @@ const EditHotel = () => {
           >
             <AlertTitle>Warning</AlertTitle>
             Fill full the information
+          </Alert>
+        </Stack>
+      )}
+      {success && (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert
+            onClose={() => {
+              setSuccess((suc) => !suc);
+              navigate("/hotels");
+            }}
+          >
+            Add hotel success
           </Alert>
         </Stack>
       )}
@@ -238,7 +252,7 @@ const EditHotel = () => {
                 return (
                   <label key={fea._id}>
                     <input
-                      defaultChecked={room.some((room) => room == fea._id)}
+                      defaultChecked={room.some((room) => room === fea._id)}
                       type="checkbox"
                       onChange={() => {
                         roomHandler(fea._id);
