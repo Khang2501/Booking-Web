@@ -17,7 +17,7 @@ const Home = () => {
   });
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/infor")
+      .get("/admin/infor")
       .then((infor) => {
         setDataInfor(infor.data);
       })

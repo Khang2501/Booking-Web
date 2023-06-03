@@ -23,7 +23,7 @@ const List = () => {
   const [dataRooms, setDataRooms] = useState([])
 
   useEffect(()=>{
-    axios.get(`http://localhost:5000/rooms?location=${location.state.destination}&peo=${Number(location.state.options.adult) + Number(location.state.options.children)}&room=${location.state.options.room}`)
+    axios.get(`/rooms?location=${location.state.destination}&peo=${Number(location.state.options.adult) + Number(location.state.options.children)}&room=${location.state.options.room}`)
     .then(result=>{setDataRooms(result.data); setIsLoading(true)})
     .catch(err=>console.log(err))
   },[location]) 

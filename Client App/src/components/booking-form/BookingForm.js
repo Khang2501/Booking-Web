@@ -119,7 +119,7 @@ const BookingForm = ({ state, hotelId, user }) => {
         roomId: roomId,
       };
       axios
-        .post("http://localhost:5000/transaction", { data: data })
+        .post("/transaction", { data: data })
         .then()
         .catch((err) => console.log(err));
       navigate("/transaction");

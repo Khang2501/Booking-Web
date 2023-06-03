@@ -25,7 +25,7 @@ const Register = () => {
     };
 
     axios
-      .post("http://localhost:5000/add-user", newUser)
+      .post("/add-user", newUser)
       .then((result) => {
         console.log(result.data);
         if (result.data === "Username is nothing!") {

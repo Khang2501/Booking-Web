@@ -65,3 +65,21 @@ exports.addNewUser = (req, res, next) => {
       .catch((err) => console.log(err));
   }
 };
+exports.getUser = (req, res, next) => {
+  const userId = req.params._id;
+
+  User.find({ _id: userId })
+    .then((user) => {
+      const data = {
+        _id: user[0]._id,
+        username: user[0].username,
+        fullName: user[0].fullName,
+        phoneNumber: user[0].phoneNumber,
+        email: user[0].email,
+      };
+      return res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

@@ -12,8 +12,10 @@ import Login from "./pages/login/Login";
 import { useSelector } from "react-redux";
 import EditHotel from "./pages/edit-hotel/EditHotel";
 import EditRoom from "./pages/edit-room/EditRoom";
+import axios from "axios";
 
 function App() {
+  axios.defaults.baseURL = "http://localhost:5000";
   const isLogin = useSelector((state) => state.isLogin);
 
   return (

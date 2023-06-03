@@ -25,7 +25,7 @@ exports.getInforBoard = (req, res, next) => {
       const dateCurr = new Date();
 
       const month = (dateCurr - dateEstablish) / 2678400000;
-      const balance = trans / Math.ceil(month);
+      const balance = Math.floor(trans / Math.ceil(month));
       inforBoard.balance = balance;
     })
     .then(() => {
