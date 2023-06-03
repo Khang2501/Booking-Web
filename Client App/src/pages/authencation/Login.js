@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const userNameRef = useRef();
   const passwordRef = useRef();
-  const [isWrong, setIsWrong] = useState();
+  const [isWrongUsername, setIsWrongUsername] = useState(false);
+  const [isWrongPassword, setIsWrongPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const loginStore = useSelector((state) => state);
@@ -20,19 +22,23 @@ const Login = () => {
 
   const loginHandler = (e) => {
     e.preventDefault();
-
     axios
       .post("/user", {
         username: userNameRef.current.value,
         password: passwordRef.current.value,
       })
       .then((result) => {
-        if (!result.data) {
-          setIsWrong(true);
+        console.log(result);
+        if (result.status === 200) {
+          if (result.data === "Username") {
+            setIsWrongUsername(true);
+            setIsWrongPassword(true);
+          } else {
+            setIsWrongPassword(true);
+          }
         } else {
           const user = result.data;
-          setIsWrong(false);
-
+          sessionStorage.setItem("login", user._id);
           dispatch({ type: "login", payload: user });
         }
       })
@@ -43,9 +49,21 @@ const Login = () => {
     <div className={classes.container}>
       <form onSubmit={loginHandler} className={classes["form-login"]}>
         <h1>Login</h1>
-        <input placeholder="Email" type="text" ref={userNameRef} />
-        <input placeholder="Password" type="password" ref={passwordRef} />
-        {isWrong && <p>User name or Password went wrong!</p>}
+        <input
+          className={isWrongUsername ? classes.isWrong : classes["input-login"]}
+          placeholder="Email"
+          type="text"
+          ref={userNameRef}
+          onChange={() => setIsWrongUsername(false)}
+        />
+        <input
+          className={isWrongPassword ? classes.isWrong : classes["input-login"]}
+          placeholder="Password"
+          type="password"
+          ref={passwordRef}
+          onChange={() => setIsWrongPassword(false)}
+        />
+
         <button>Login</button>
       </form>
     </div>

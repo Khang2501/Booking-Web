@@ -13,7 +13,7 @@
     margin-bottom: 25px;
     text-align: center;
 }
-.form-login input {
+.input-login {
     background-color: rgb(232, 240, 254);
     border: 1px solid rgb(135, 135, 135);
     padding: 10px 20px;
@@ -37,4 +37,11 @@
     border: none;
     padding: 0;
     border-radius: 5px;
+}
+.isWrong {
+    background-color: rgb(232, 240, 254);
+    border: 1px solid red;
+    padding: 10px 20px;
+    height: 30px;
+    margin: 0 0 15px;
 }

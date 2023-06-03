@@ -1,13 +1,25 @@
 const User = require("../models/user");
 
 exports.loginUser = (req, res, next) => {
-  User.find({ username: req.body.username, password: req.body.password })
+  User.find({ username: req.body.username })
     .then((user) => {
       if (user.length === 0) {
-        return res.send(false);
-      } else {
-        return res.send(user[0]);
+        return res.status(200).send("Username");
       }
+      return user[0];
+    })
+    .then((user) => {
+      if (user.password !== req.body.password) {
+        return res.status(200).send("Password");
+      }
+      const data = {
+        _id: user._id,
+        username: user.username,
+        fullName: user.fullName,
+        phoneNumber: user.phoneNumber,
+        email: user.email,
+      };
+      return res.status(202).json(data);
     })
     .catch((err) => {
       console.log(err);
