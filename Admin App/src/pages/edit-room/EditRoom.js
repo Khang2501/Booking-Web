@@ -7,7 +7,9 @@ import Stack from "@mui/material/Stack";
 import AlertTitle from "@mui/material/AlertTitle";
 
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const EditRoom = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
@@ -22,25 +24,24 @@ const EditRoom = () => {
   const [defaultPrice, setDefaultPrice] = useState("");
   const [defaultMaxPeoPle, setDefaultMaxPeoPle] = useState("");
 
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/admin/room/${params.roomId}`)
-      .then((result) => {
-        const data = result.data[0];
+    axios.get(`/admin/room/${params.roomId}`).then((result) => {
+      const data = result.data[0];
 
-        setTitle(data.title);
-        setPrice(data.price);
-        setMaxPeople(data.maxPeople);
-        setDescription(data.desc);
-        setRooms(data.roomNumbers.toString());
-        setDefaultPrice(data.price.toString());
-        setDefaultMaxPeoPle(data.maxPeople.toString());
-      });
+      setTitle(data.title);
+      setPrice(data.price);
+      setMaxPeople(data.maxPeople);
+      setDescription(data.desc);
+      setRooms(data.roomNumbers.toString());
+      setDefaultPrice(data.price.toString());
+      setDefaultMaxPeoPle(data.maxPeople.toString());
+    });
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/hotel/all")
+      .get("/admin/hotel/all")
       .then((result) => {
         const arr = result.data.map((res) => {
           return {
@@ -69,14 +70,16 @@ const EditRoom = () => {
       setToggleWarning(false);
 
       axios
-        .post(`http://localhost:5000/admin/edit-room/${params.roomId}`, {
+        .post(`/admin/edit-room/${params.roomId}`, {
           title: title,
           price: price,
           maxPeople: maxPeople,
           desc: description,
           roomNumbers: rooms.split(",").map((num) => Number(num)),
         })
-        .then(() => {})
+        .then(() => {
+          setSuccess(true);
+        })
         .catch((err) => {
           console.log(err);
         });
@@ -95,6 +98,18 @@ const EditRoom = () => {
           >
             <AlertTitle>Warning</AlertTitle>
             Fill full the information
+          </Alert>
+        </Stack>
+      )}
+      {success && (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert
+            onClose={() => {
+              setSuccess((suc) => !suc);
+              navigate("/rooms");
+            }}
+          >
+            Update Room success
           </Alert>
         </Stack>
       )}

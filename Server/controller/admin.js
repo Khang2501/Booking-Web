@@ -127,7 +127,7 @@ exports.addNewRoom = (req, res, next) => {
     desc: req.body.desc,
     roomNumbers: req.body.roomNumbers,
   });
-  room.save();
+  room.save().then(() => res.send(true));
 };
 exports.loginAdmin = (req, res, next) => {
   User.find({
@@ -188,7 +188,6 @@ exports.updateRoom = (req, res, next) => {
       return room.save();
     })
     .then(() => {
-      console.log("COMPLTED");
       res.send("COMPLTED");
     })
     .catch((err) => {

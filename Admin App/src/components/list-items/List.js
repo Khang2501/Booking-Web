@@ -7,7 +7,7 @@ const List = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/transaction/all")
+      .get("/transaction/all")
       .then((result) => {
         setData(result.data.slice(0, 8));
       })

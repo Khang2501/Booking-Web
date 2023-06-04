@@ -28,7 +28,7 @@ const AddHotel = () => {
   const [success, setSuccess] = useState(false);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/room/all")
+      .get("/admin/room/all")
       .then((result) => {
         const arr = result.data.map((res) => {
           return {

@@ -6,6 +6,7 @@ import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import AlertTitle from "@mui/material/AlertTitle";
 
+import { useNavigate } from "react-router-dom";
 const AddRoom = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
@@ -17,9 +18,11 @@ const AddRoom = () => {
   const [dataHotels, setDataHotels] = useState([]);
   const [toggleWarning, setToggleWarning] = useState(false);
 
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/hotel/all")
+      .get("/admin/hotel/all")
       .then((result) => {
         const arr = result.data.map((res) => {
           return {
@@ -46,14 +49,16 @@ const AddRoom = () => {
       setToggleWarning(true);
     } else {
       axios
-        .post("http://localhost:5000/admin/add-new-room", {
+        .post("/admin/add-new-room", {
           title: title,
           price: price,
           maxPeople: maxPeople,
           desc: description,
           roomNumbers: rooms.split(",").map((num) => Number(num)),
         })
-        .then(() => {})
+        .then((res) => {
+          if (res.data) setSuccess(true);
+        })
         .catch((err) => {
           console.log(err);
         });
@@ -72,6 +77,18 @@ const AddRoom = () => {
           >
             <AlertTitle>Warning</AlertTitle>
             Fill full the information
+          </Alert>
+        </Stack>
+      )}
+      {success && (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert
+            onClose={() => {
+              setSuccess((suc) => !suc);
+              navigate("/rooms");
+            }}
+          >
+            Add Room success
           </Alert>
         </Stack>
       )}

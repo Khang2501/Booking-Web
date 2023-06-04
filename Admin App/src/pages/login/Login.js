@@ -16,7 +16,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/admin/getAdmin", {
+      .post("/admin/getAdmin", {
         username: userNameRef.current.value,
         password: passwordRef.current.value,
       })

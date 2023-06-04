@@ -23,7 +23,7 @@ const Rooms = () => {
   const [resetData, setResetData] = useState(false);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/room/all")
+      .get("/admin/room/all")
       .then((result) => {
         setData(result.data);
       })
@@ -36,7 +36,7 @@ const Rooms = () => {
   };
   const deleteHotelHandler = () => {
     axios
-      .post(`http://localhost:5000/admin/deleted-room/${idDelete}`)
+      .post(`/admin/deleted-room/${idDelete}`)
       .then((result) => {
         if (!result.data.status) {
           setIsToggleErr(true);
