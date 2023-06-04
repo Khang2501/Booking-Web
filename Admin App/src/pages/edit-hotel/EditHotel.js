@@ -25,7 +25,7 @@ const EditHotel = () => {
   const [dataFea, setDataFea] = useState([]);
   const [toggleWarning, setToggleWarning] = useState(false);
 
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   const [defaultPrice, setDefaultPrice] = useState("");
   useEffect(() => {
     axios
@@ -112,7 +112,9 @@ const EditHotel = () => {
           rooms: room,
           cheapestPrice: price,
         })
-        .then(() => {})
+        .then((res) => {
+          if (res.data === "COMPLETED") setSuccess(true);
+        })
         .catch((err) => {
           console.log(err);
         });

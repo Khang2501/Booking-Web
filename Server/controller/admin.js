@@ -166,8 +166,7 @@ exports.updateHotel = (req, res, next) => {
       return hotel.save();
     })
     .then(() => {
-      console.log("COMPLTED");
-      res.send("COMPLTED");
+      res.send("COMPLETED");
     })
     .catch((err) => {
       res.send(err);
