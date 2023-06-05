@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 
 const Hotel = require("./models/hotel");
 
 const mongoose = require("mongoose");
-
 const userRouter = require("./router/user");
 const hotelRouter = require("./router/hotel");
 const transactionRouter = require("./router/transaction");
@@ -21,14 +21,14 @@ app.use(userRouter);
 app.use(hotelRouter);
 app.use(transactionRouter);
 app.use("/admin", adminRouter);
-
+console.log(process.env);
 mongoose
   .connect(
-    "mongodb+srv://khanghvfx17345:IBR9NwJ3lwdaWMhD@cluster0.5jq4ht4.mongodb.net/booking?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.5jq4ht4.mongodb.net/${process.env.MONGODB_DEFAULT_DATABASE}?retryWrites=true&w=majority`
   )
 
   .then((result) => {
-    app.listen(5000);
+    app.listen(process.env.PORT || 5000);
   })
   .catch((err) => {
     console.log(err);
