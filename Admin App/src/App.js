@@ -15,7 +15,7 @@ import EditRoom from "./pages/edit-room/EditRoom";
 import axios from "axios";
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:5000";
+  axios.defaults.baseURL = "https://booking-web-8us1.onrender.com";
   const isLogin = useSelector((state) => state.isLogin);
 
   return (

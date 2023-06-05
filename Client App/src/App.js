@@ -7,7 +7,7 @@ import Register from "./pages/authencation/Register";
 import Transaction from "./pages/transaction/Transaction";
 import axios from "axios";
 function App() {
-  axios.defaults.baseURL = "http://localhost:5000";
+  axios.defaults.baseURL = "https://booking-web-8us1.onrender.com";
   return (
     <BrowserRouter>
       <Routes>
